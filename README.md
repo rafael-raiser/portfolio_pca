@@ -36,7 +36,7 @@ We use all the dataset to construct the eigenvectors (the principal components).
 
 To test
 
-
+![original_vs_rec](https://github.com/rafael-raiser/portfolio_pca/assets/142827112/9619d4a7-70af-40b2-a435-216615de1f28)
 
 
 

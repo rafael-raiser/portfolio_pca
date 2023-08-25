@@ -12,21 +12,29 @@ The same logics can be applied to analyze an arbitrary set of D-dimensional data
 
 ## PCA for images
 
-In the case of images of size m x n, We can interpret an area of $m\cdot n$ px², rearranged in a proper way, as a vector with dimension $m\cdot n$. For black and white images, each element of the vector contains a number representing the grayness of that pixel; for colored images, each element would contain 3 numbers refering to the ammount of red, green and blue in that pixel (the vector, in this case, would be $3m\cdot n$ long).
+In the case of images of size m x n, We can interpret an area of m x n px², rearranged in a proper way, as a vector with dimension m x n. For black and white images, each element of the vector contains a number representing the grayness of that pixel; for colored images, each element would contain 3 numbers refering to the ammount of red, green and blue in that pixel (the vector, in this case, would be 3m x n long).
 
-Even for a single colored image of, let's say, 100x100 px², one would have to deal with vectors with 30000 elements. Treating a dataset containing a large number of these images would require too much computational effort. Here is the point PCA come in action.
+Even for a single colored image of, let's say, 100x100 px², one would have to deal with vectors with 30000 elements. Treating a dataset containing a large number of these images would require too much computational effort. Here is the point at which PCA comes in hand.
 
-Despite some mathematical formalities, the procedure is simple: one must construct the vectors for each image and, from them, calculate the covariance matrix S. In the following expression, N is the number of images (now vectors), $x_n$ is an individual vector and $\bar{x}$ is the average between all the vectors.
+Just as it happens for ordinary data, PCA can be used to "compress" images by finding principal components of the dataset. For a dataset a faces, for example, one would expect the principal components to be circles, noses, mouths etc. The combination of these PC's in differents compositions can reproduce the faces. The quality of the reconstruction depends, of course, on how many principal components are applied.
+
+Putting aside some mathematical formalities, the procedure is simple: one must construct the vectors for each image, each element containing the grayness of one pixel. From all the vectors of the dataset, the covariance matrix S is calculated. In the following expression, N is the number of images (now vectors), $x_n$ is an individual vector and $\bar{x}$ is the average between all the vectors.
 
 $$S= \frac{1}{N} \sum_{n=1}^N (x_n - \bar{x})(x_n - \bar{x})^{T}  $$
 
 Then, one must calcuulate the eigenvectors and eigenvalues of S. The largest the eigenvalue, the most representative to the whole set is the respective eigenvector. In other words, the eigenvector with largest eigenvalue is the principal component of the whole dataset ans so on.
 
-Figure below shows the 6 principal components (or eigenvectors with higer eigenvalues) to the galaxy-10 Dataset.
+The next step is to chose the number a eigenvectors (in decreasing order along the eigenvalues) smaller than the original dimension of the images. Then, we project the original images into this new basis of eigenvectors, generating compressed images.
 
+## The Galaxy Dataset
 
+The present repository is a demonstration of PCA over the Galaxy DECals 10 Dataset (source: https://astronn.readthedocs.io/en/latest/galaxy10.html), containing 17736 images with size 256x256 distributed in different galactical morphologies.
 
-If each image has D px² (thus their vectorial representation is D-dimensional), we chose M<D eigenvectors with decreasing eigenvalues and, then, project the original vectorized-images into this set of eigenvectors.
+We use all the dataset to construct the eigenvectors (the principal components). Figure below shows the first 6.
+
+![evectors](https://github.com/rafael-raiser/portfolio_pca/assets/142827112/15c764f0-2b4a-4cc7-adbe-3e888955bb43)
+
+To test
 
 
 

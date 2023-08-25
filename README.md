@@ -8,6 +8,22 @@ PCA is a method to represent and store huge amounts of data using what is called
 
 Essentially, this is dimensionality reduction. We just transformed a 2D problem into a 1D one.
 
-The same logics can be applied to analyze an arbitrary set of D-dimensional data. With the right math, you can extract from your data D unitary vectors (actually eigenvectors) with their respective proportional variance (their eigenvalues). The vectors with highest eigenvalues are more suitable to represent the whole dataset. If you are starting from a 100-dimensional problem, for example, you could choose to work with the 10 eigenvectors with largest eigenvalues and your representation would probably
+The same logics can be applied to analyze an arbitrary set of D-dimensional data. With the right math, you can extract from your data D unitary vectors (actually eigenvectors) with their respective proportional variance (their eigenvalues). The eigenvectors with the highest eigenvalues are more suitable to represent the whole dataset. 
+
+## PCA for images
+
+In the case of images of size m x n, We can interpret an area of $m\cdot n$ px², rearranged in a proper way, as a vector with dimension $m\cdot n$. For black and white images, each element of the vector contains a number representing the grayness of that pixel; for colored images, each element would contain 3 numbers refering to the ammount of red, green and blue in that pixel (the vector, in this case, would be $3m\cdot n$ long).
+
+Even for a single colored image of, let's say, 100x100 px², one would have to deal with vectors with 30000 elements. Treating a dataset containing a large number of these images would require too much computational effort. Here is the point PCA come in action.
+
+Despite some mathematical formalities, the procedure is simple: one must construct the vectors for each image and, from them, calculate the covariance matrix S. In the following expression, N is the number of images (now vectors), $x_n$ is an individual vector and $\bar{x}$ is the average between all the vectors.
+
+$$S= \frac{1}{N} \sum_{n=1}^N (x_n - \bar{x})(x_n - \bar{x})^{T}  $$
+
+Then, one must calcuulate the eigenvectors and eigenvalues of S. The largest the eigenvalue, the most representative to the whole set is the respective eigenvector. In other words, the eigenvector with largest eigenvalue is the principal component of the whole dataset.
+
+
+
+
 
 

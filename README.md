@@ -20,7 +20,14 @@ Despite some mathematical formalities, the procedure is simple: one must constru
 
 $$S= \frac{1}{N} \sum_{n=1}^N (x_n - \bar{x})(x_n - \bar{x})^{T}  $$
 
-Then, one must calcuulate the eigenvectors and eigenvalues of S. The largest the eigenvalue, the most representative to the whole set is the respective eigenvector. In other words, the eigenvector with largest eigenvalue is the principal component of the whole dataset.
+Then, one must calcuulate the eigenvectors and eigenvalues of S. The largest the eigenvalue, the most representative to the whole set is the respective eigenvector. In other words, the eigenvector with largest eigenvalue is the principal component of the whole dataset ans so on.
+
+Figure below shows the 6 principal components (or eigenvectors with higer eigenvalues) to the galaxy-10 Dataset.
+
+
+
+If each image has D px² (thus their vectorial representation is D-dimensional), we chose M<D eigenvectors with decreasing eigenvalues and, then, project the original vectorized-images into this set of eigenvectors.
+
 
 
 

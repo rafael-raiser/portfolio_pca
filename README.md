@@ -30,9 +30,9 @@ $$ S= \frac{1}{N} \sum_{n=1}^N \boldsymbol{y_n} \boldsymbol{y_n}^{T}  $$
 
 The (unitary) eigenvectors of S are now calculated and sorted into descending order according to the the respective eigenvalues (the eigenvalues can be shown to be proportional to the variance). This gives rise to an orthogonal basis of the D-dimensional space: $\{\boldsymbol{e_1}, \boldsymbol{e_2}, ..., \boldsymbol{e_D}\}$. 
 
-The last step is to obtain an approximation ($\boldsymbol{{{x'}_n}}$) of the original dataset using only the first M principal components; this is done by projection:
+The last step is to obtain an approximation ($\boldsymbol{{x_n'}}$) of the original dataset using only the first M principal components; this is done by projection:
 
-$$ \boldsymbol{{{x'}_n}} = \boldsymbol{\bar{x}} + \sum_{i=1}^D (\boldsymbol{y_n}^T \boldsymbol{e_i})\boldsymbol{e_i} $$
+$$ \boldsymbol{{x_n'}} = \boldsymbol{\bar{x}} + \sum_{i=1}^D (\boldsymbol{y_n}^T \boldsymbol{e_i})\boldsymbol{e_i} $$
 
 ## PCA for images
 

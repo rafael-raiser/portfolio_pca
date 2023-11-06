@@ -30,7 +30,7 @@ Then, one must calculate the eigenvectors and eigenvalues of S. The largest the 
 
 In the next step, we compress the dataset by chosing the first M<N principal components. Just as in the case of points on a plane represented by their height on the tendency line, each image can be projected onto this subset of principal components. 
 
-Let ${\bm{e_1}, \bm{e_2}, ..., \bm{e_M}}$ be the first M principal components. The approximation of the image represented by $\bf{x_n}$ will be
+Let ${\boldsymbol{e_1}, \boldsymbol{e_2}, ..., \boldsymbol{e_M}}$ be the first M principal components. The approximation of the image represented by $\boldsymbol{x_n}$ will be
 
 $$\bf{\tilde{x_n}}=\sum_{n=1}^M \bf{x_n}\cdot \bf{e_n} $$
 

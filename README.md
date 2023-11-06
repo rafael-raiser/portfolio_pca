@@ -13,7 +13,7 @@ The same logics can be applied to analyze an arbitrary set of D-dimensional data
 
 ## Mathematical formulation of PCA
 
-We now discuss how to represent a set ${\boldsymbol{x_1},\boldsymbol{x_2},...,\boldsymbol{x_N}}$ containing N D-dimensional vectors (though here as column vectors) using only M (M<D) dimensions. Appart from some mathematical formalities regarding the pre-processing of the dataset, the first step is to calculate the mean vector and the deviation from the mean:
+We now discuss how to represent a set $\{\boldsymbol{x_1},\boldsymbol{x_2},...,\boldsymbol{x_N}\}$ containing N D-dimensional vectors (though here as column vectors) using only M (M<D) dimensions. Appart from some mathematical formalities regarding the standardization of the dataset, the first step is to calculate the mean vector and the deviation from the mean:
 
 $$\bar{x}=\frac{1}{N} \sum_{n=1}^N \boldsymbol{x_n} $$
 
@@ -23,9 +23,9 @@ Then, the covariance matrix S of dimension DxD is evaluated by
 
 $$ S= \frac{1}{N} \sum_{n=1}^N \boldsymbol{y_n} \boldsymbol{y_n}^{T}  $$
 
-The (unitary) eigenvectors of S are now calculated and sorted into descending order according to the the respective eigenvalue, giving rise to an orthogonal basis of the D-dimensional space ${\boldsymbol{e_1}, \boldsymbol{e_2}, ..., \boldsymbol{e_D}}$. The last step is to obtain an approximation $\boldsymbol{\tilde{x_n}}$ of the original dataset using only the first M principal components; this is done by projection:
+The (unitary) eigenvectors of S are now calculated and sorted into descending order according to the the respective eigenvalue, giving rise to an orthogonal basis of the D-dimensional space $\{\boldsymbol{e_1}, \boldsymbol{e_2}, ..., \boldsymbol{e_D}\}$. The last step is to obtain an approximation $\boldsymbol{{x_n}}'$ of the original dataset using only the first M principal components; this is done by projection:
 
-$$ \boldsymbol{\tilde{x_n}} = \boldsymbol{\bar{x}} + \sum_{i=1}^D (\boldsymbol{y_n}^T \boldsymbol{e_i})\boldsymbol{e_i} $$
+$$ \boldsymbol{{x_n}'} = \boldsymbol{\bar{x}} + \sum_{i=1}^D (\boldsymbol{y_n}^T \boldsymbol{e_i})\boldsymbol{e_i} $$
 
 ## PCA for images
 

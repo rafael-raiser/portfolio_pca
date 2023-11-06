@@ -11,6 +11,22 @@ Figure 1 shows the two principal directions of variance, or principal components
 
 The same logics can be applied to analyze an arbitrary set of D-dimensional data. With the right math, you can extract from the dataset D principal components (in the form of eigenvectors), each one with their respective proportional variance (their eigenvalues). These vectors are organized in descending order of variance (the one with larger variance being the 1st principal component etc.) so, in order to obtain compact the dataset, it's enough to pick M (M<D) first principal components. Of course, the data compacted in this way will be an approximation: the highest the value of M, the more accurate the approximation will be.
 
+## Mathematical formulation of PCA
+
+We now discuss how to represent a set ${\boldsymbol{x_1},\boldsymbol{x_2},...,\boldsymbol{x_N}}$ containing N D-dimensional vectors (though here as column vectors) using only M (M<D) dimensions. Appart from some mathematical formalities regarding the pre-processing of the dataset, the first step is to calculate the mean vector and the deviation from the mean:
+
+$$\bar{x}=\frac{1}{N} \sum_{n=1}^N \boldsymbol{x_n} $$
+
+$$ \boldsymbol{y_n} = \boldsymbol{x_n - \bar{x}} $$
+
+Then, the covariance matrix S of dimension DxD is evaluated by
+
+$$ S= \frac{1}{N} \sum_{n=1}^N \boldsymbol{y_n} \boldsymbol{y_n}^{T}  $$
+
+The (unitary) eigenvectors of S are now calculated and sorted into descending order according to the the respective eigenvalue, giving rise to an orthogonal basis of the D-dimensional space ${\boldsymbol{e_1}, \boldsymbol{e_2}, ..., \boldsymbol{e_D}}$. The last step is to obtain an approximation ({$\boldsymbol{\tilde{x_n}}$}) of the original dataset using only the first M principal components; this is done by projection:
+
+$$ \boldsymbol{\tilde{x_n}} = \boldsymbol{\bar{x}} + \sum_{i=1}^D (\boldsymbol{x_n}^T \boldsymbol{e_i})\boldsymbol{e_i} $$
+
 ## PCA for images
 
 A black and white image h pixels high and w pixels wide consists of a square matrix with D=h*w elements (Figure 2). Arranged in some proper way, these values can be represented as a vector; a set of images is nothing more than a set of vectors with N components (for colored images, each square pixel would contain 3 numbers refering to the ammount of red, green and blue. The vector, in that case, would be 3D long).
@@ -22,19 +38,19 @@ Even for a single colored image of, let's say, 100x100 square pixels, one would 
 
 Just as it happens for ordinary data, PCA can be used to "compress" images by finding principal components of the dataset. For a dataset of faces, for example, one would expect the principal components to be circles, noses, mouths etc; the combination of these PC's in differents compositions can reproduce the faces. The quality of the reconstruction depends, of course, on how many principal components are applied.
 
-Putting aside some mathematical formalities, the procedure is simple: one must first rearrange the grayness or RGB values of the images into vectors. From all the vectors of the dataset, the covariance matrix S is calculated; in the following expression, N is the number of images (represented now by vectors), $x_n$ is an individual vector and $\bar{x}$ is the average vector.
+Putting aside some mathematical formalities, the main steps of the procedure are simple. One must first rearrange the grayness or RGB values of the N images of the dataset into the column vectors $x_1, x_2, ..., x_N$. Then, the covariance matrix S is calculated using the following expression ($\bar{x}$ is the average vector):
 
-$$S= \frac{1}{N} \sum_{n=1}^N (x_n - \bar{x})(x_n - \bar{x})^{T}  $$
+$$S= \frac{1}{N} \sum_{n=1}^N (x_n - \bar{x})(x_n - \bar{x})^{T}  $$ Dx1 1xD
 
-Then, one must calculate the eigenvectors and eigenvalues of S. The largest the eigenvalue, the most representative to the whole set is the respective eigenvector. In other words, the vector with largest eigenvalue is the 1st principal component and so on.
+The principal components are obtained by calculating the eigenvectors and eigenvalues of S. The largest the eigenvalue, the most representative to the whole set is the respective eigenvector. In other words, the vector with largest eigenvalue is the 1st principal component and so on.
 
 In the next step, we compress the dataset by chosing the first M<N principal components. Just as in the case of points on a plane represented by their height on the tendency line, each image can be projected onto this subset of principal components. 
 
-Let ${\boldsymbol{e_1}, \boldsymbol{e_2}, ..., \boldsymbol{e_M}}$ be the first M principal components. The approximation of the image represented by $\boldsymbol{x_n}$ will be
+Let $e_1, e_2, ..., e_M}$ be the unitary eigenvectors related to the first M PC's. The approximation of the image represented by $x_n$ will be
 
-$$\bf{\tilde{x_n}}=\sum_{n=1}^M \bf{x_n}\cdot \bf{e_n} $$
+$$\tilde{x_n}=\sum_{n=1}^M (x_n e_n} $$ D*N
 
-Finally, the images can be recovered by rearranging the elements of the vector.
+Finally, the image corresponding to each vector can be recovered by rearranging its elements.
 
 ## The Galaxy Dataset
 

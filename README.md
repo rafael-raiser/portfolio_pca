@@ -20,7 +20,9 @@ Appart from some details regarding the standardization of the dataset, the first
 
 $$ \boldsymbol{y_n} = \boldsymbol{x_n - \bar{x}} $$
 
-where $\boldsymbol{\bar{x}}=\sum_n^N \boldsymbol{x_n}/N$.
+where $\boldsymbol{\bar{x}}$ is the mean vector
+
+$$\boldsymbol{\bar{x}}=\sum_n^N \boldsymbol{x_n}/N$$
 
 It can be shown that the principal components (i.e. the main directions of variance) arise from evaluating the eigenvectors of the covariance matrix S (with dimension DxD). The derivation of this comes from the minimization of the error of the approximations.
 
